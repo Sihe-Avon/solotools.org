@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solotools.org: Admin Dashboard</title>
+    <meta name="description" content="Admin dashboard for solotools.org website management.">
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+    <link rel="icon" type="image/png" href="icons/icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1', // Indigo color similar to hix.ai
+                        secondary: '#F0F4F8', // Light blue-gray
+                        dark: '#1E293B',     // Dark blue-gray
+                        light: '#F8FAFC',    // Very light gray
+                        accent: '#EC4899',   // Pink accent
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #6366F1, #EC4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">solotools.org</a>
+                    <span class="ml-2 px-2 py-1 bg-primary text-white text-xs rounded-md">Admin</span>
+                </div>
+                <div>
+                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors">
+                        <i class="fas fa-arrow-left mr-1"></i> Back to Site
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h2 class="text-lg font-semibold mb-4">Dashboard</h2>
+                    <nav>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#tool-submissions" class="block px-4 py-2 rounded-md hover:bg-secondary transition-colors">
+                                    <i class="fas fa-tools mr-2"></i> Tool Submissions
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#email-subscriptions" class="block px-4 py-2 rounded-md hover:bg-secondary transition-colors">
+                                    <i class="fas fa-envelope mr-2"></i> Email Subscriptions
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="lg:col-span-3">
+                <!-- Tool Submissions -->
+                <section id="tool-submissions" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold">Tool Submissions</h2>
+                        <button onclick="exportToolsToCSV()" class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-indigo-600 transition-colors">
+                            <i class="fas fa-download mr-1"></i> Export CSV
+                        </button>
+                    </div>
+                    
+                    <div id="admin-tools-container">
+                        <!-- Tool submissions will be loaded here -->
+                        <p class="text-gray-500">Loading submissions...</p>
+                    </div>
+                </section>
+                
+                <!-- Email Subscriptions -->
+                <section id="email-subscriptions" class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold">Email Subscriptions</h2>
+                        <button onclick="exportEmailsToCSV()" class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-indigo-600 transition-colors">
+                            <i class="fas fa-download mr-1"></i> Export CSV
+                        </button>
+                    </div>
+                    
+                    <div id="admin-emails-container">
+                        <!-- Email subscriptions will be loaded here -->
+                        <p class="text-gray-500">Loading subscriptions...</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-8 py-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 solotools.org. Admin Dashboard.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/form-handler.js"></script>
+</body>
+</html>
